@@ -13,7 +13,7 @@ static public partial class GFunc
         if (Txt == null || Txt == default(TMP_Text))
         {
             return;
-        } // TMP_Text°¡ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì
+        } // TMP_Textê°€ ì¡´ìž¬í•˜ì§€ ì•ŠëŠ” ê²½ìš°
 
         Txt.text = text_;
     }

@@ -16,10 +16,11 @@ public static partial class GFunc
 #endif
     }
 
+    // 뒤에 int a, int b는 인자임.
     public static void KJH(this GameObject obj_, int a, int b)
     {
         Debug.Log("This is my Function. Absolutly created by KJH");
-    }
+    } // GameObject 내부 메소드에 추가. Extended Method(확장 메서드)
 
     public static GameObject GetRootObj(string objName_)
     {
@@ -55,7 +56,7 @@ public static partial class GFunc
         return searchObject;
     }
 
-    public static GameObject FindChildObj(this GameObject targetObj_, string? ObjName_)
+    public static GameObject FindChildObj(this GameObject targetObj_, string ObjName_)
     {
         GameObject searchResult = default;
         GameObject searchTarget = default;
@@ -79,5 +80,25 @@ public static partial class GFunc
     public static Scene GetActiveScene()
     {
         return SceneManager.GetActiveScene();
+    }
+
+    // T의 이름을 바꿔서 줄 수 있음을 보여주는 코드
+    public static T GetComponentMust<T>(this GameObject obj_)
+    {
+        T component_ = obj_.GetComponent<T>();
+        GFunc.Assert(component_.IsValid(), 
+            string.Format("{0}에서 {1}을 찾을 수 없습니다.", obj_.name, component_.GetType().Name));
+        return component_;
+    }
+
+    // RectTransform 에서 sizeDelta를 찾아서 리턴
+    public static Vector2 GetRectSizeDelta(this GameObject obj_)
+    {
+        return obj_.GetComponent<RectTransform>().sizeDelta;
+    }
+
+    public static void SetLocalPos(this GameObject obj_, float x, float y, float z)
+    {
+        obj_.transform.localPosition = new Vector3(x, y, z);
     }
 }
