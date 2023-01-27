@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class AutoSizeBoxCollider2D : MonoBehaviour
 {
-
-    void Start()
+    void Awake()
     {
-        BoxCollider2D boxCollider =
-            gameObject.GetComponentMust<BoxCollider2D>();
-
-        boxCollider.size = gameObject.GetComponentMust<RectTransform>().sizeDelta;
+        BoxCollider2D boxCollider = gameObject.GetComponentMust<BoxCollider2D>();
+        boxCollider.size = gameObject.GetRectSizeDelta();
     }
 }

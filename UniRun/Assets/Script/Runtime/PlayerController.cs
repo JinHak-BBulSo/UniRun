@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
         playerAudio.Play();
         playerRigid.velocity = Vector2.zero;
         isDead = true;
+        GameManager.instance.OnPlayerDead();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

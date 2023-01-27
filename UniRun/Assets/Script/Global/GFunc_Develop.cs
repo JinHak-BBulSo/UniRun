@@ -21,9 +21,15 @@ public static partial class GFunc
         Debug.Log(message, context);
 #endif
     }
-#endregion // Print log func
-
-#region Assert for debug
+    #endregion // Print log func
+    [System.Diagnostics.Conditional("DEBUG_MODE")]
+    public static void LogWarning(object message)
+    {
+#if DEBUG_MODE
+        Debug.LogWarning(message);
+#endif
+    }
+    #region Assert for debug
     [System.Diagnostics.Conditional("DEBUG_MODE")]
     public static void Assert(bool condition)
     {

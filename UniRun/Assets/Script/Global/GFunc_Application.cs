@@ -81,7 +81,10 @@ public static partial class GFunc
     {
         return SceneManager.GetActiveScene();
     }
-
+    public static void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
     // T의 이름을 바꿔서 줄 수 있음을 보여주는 코드
     public static T GetComponentMust<T>(this GameObject obj_)
     {
@@ -100,5 +103,10 @@ public static partial class GFunc
     public static void SetLocalPos(this GameObject obj_, float x, float y, float z)
     {
         obj_.transform.localPosition = new Vector3(x, y, z);
+    }
+
+    public static void AddLocalPos(this GameObject obj_, float x, float y, float z)
+    {
+        obj_.transform.localPosition += new Vector3(x, y, z);
     }
 }
